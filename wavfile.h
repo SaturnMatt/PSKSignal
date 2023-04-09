@@ -56,7 +56,7 @@ public:
         std::ofstream outFile(filename, std::ios::binary);
         outFile.write(reinterpret_cast<const char*>(&header), sizeof(WavHeader));
 
-        for (double sample : signal.samples) {
+        for (auto sample : signal.samples) {
             int16_t intSample = static_cast<int16_t>(clampAmplitude(sample * maxAmplitude));
             outFile.write(reinterpret_cast<const char*>(&intSample), sizeof(int16_t));
         }
